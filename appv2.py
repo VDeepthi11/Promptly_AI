@@ -58,10 +58,88 @@ else:
 
     for index, row in display_df.iterrows():
         with st.expander(f"📌 {row['model']} | {row['category']} | {row['prompt'][:40]}..."):
-            st.markdown(f"**Prompt:**\n{row['prompt']}")
-            st.info(f"**Response:**\n{row['response']}")
-            
-            if st.button("Delete Entry", key=f"del_{row['id']}"):
-                c.execute("DELETE FROM vault WHERE id=?", (row['id'],))
-                conn.commit()
-                st.rerun()
+
+    # If edit mode is ON for this record
+            if st.session_state.get("edit_id") == row["id"]:
+                with st.form(f"edit_form_{row['id']}"):
+
+                    new_category = st.selectbox(
+                        "Category",
+                        ["Coding", "Creative", "Logic", "Summarization"],
+                        index=["Coding", "Creative", "Logic", "Summarization"].index(row["category"])
+                    )
+
+                    new_model = st.text_input(
+                        "AI Model",
+                        value=row["model"]
+                    )
+
+                    new_prompt = st.text_area(
+                        "Prompt",
+                        value=row["prompt"]
+                    )
+
+                    new_response = st.text_area(
+                        "Response",
+                        value=row["response"]
+                    )
+
+                    col1, col2 = st.columns(2)
+
+                    with col1:
+                        update = st.form_submit_button("💾 Update")
+
+                    with col2:
+                        cancel = st.form_submit_button("❌ Cancel")
+
+                    if update:
+                        c.execute("""
+                            UPDATE vault
+                            SET category=?,
+                                prompt=?,
+                                model=?,
+                                response=?
+                            WHERE id=?
+                        """,
+                        (
+                            new_category,
+                            new_prompt,
+                            new_model,
+                            new_response,
+                            row["id"]
+                        ))
+
+                        conn.commit()
+
+                        st.success("Entry Updated Successfully!")
+
+                        del st.session_state["edit_id"]
+
+                        st.rerun()
+
+                    if cancel:
+                        del st.session_state["edit_id"]
+                        st.rerun()
+
+            else:
+
+                st.markdown("### Prompt")
+                st.write(row["prompt"])
+
+                st.markdown("### Response")
+                st.info(row["response"])
+
+                col1, col2 = st.columns(2)
+
+                with col1:
+                    if st.button("✏️ Edit", key=f"edit_{row['id']}"):
+                        st.session_state["edit_id"] = row["id"]
+                        st.rerun()
+
+                with col2:
+                    if st.button("🗑 Delete", key=f"del_{row['id']}"):
+                        c.execute("DELETE FROM vault WHERE id=?", (row["id"],))
+                        conn.commit()
+                        st.success("Entry Deleted!")
+                        st.rerun()
+                        
