@@ -4,37 +4,45 @@
 
 ---
 
+## 🌐 Live Demo
+
+🚀 **Try the application online:**
+
+**https://promptlyai-ct.streamlit.app/**
+
+---
+
 ## ✨ Features
 
 * ➕ Create and save AI prompts with responses
-* 📖 View all saved prompts in an organized layout
+* 📖 View all saved prompts
 * ✏️ Edit and update existing prompts
-* 🗑️ Delete prompts when no longer needed
+* 🗑️ Delete prompts
 * 🔍 Search prompts by prompt text or AI model
-* 🏷️ Categorize prompts (Coding, Creative, Logic, Summarization)
-* 🤖 Track the AI model used for each prompt
-* 💾 Store data locally using SQLite
-* ⚡ Interactive and user-friendly interface built with Streamlit
+* 🏷️ Organize prompts by category
+* 🤖 Track the AI model used
+* 💾 Store data using SQLite
+* ⚡ Clean and interactive Streamlit interface
 
 ---
 
 ## 🛠️ Tech Stack
 
-* **Python**
-* **Streamlit**
-* **SQLite**
-* **Pandas**
+* Python
+* Streamlit
+* SQLite
+* Pandas
 
 ---
 
 ## 📌 CRUD Operations
 
-| Operation  | Description                         |
-| ---------- | ----------------------------------- |
-| **Create** | Save new prompts and AI responses   |
-| **Read**   | View all stored prompts             |
-| **Update** | Edit existing prompts and responses |
-| **Delete** | Remove prompts from the vault       |
+| Operation  | Description                    |
+| ---------- | ------------------------------ |
+| **Create** | Save new prompts and responses |
+| **Read**   | View stored prompts            |
+| **Update** | Edit existing prompts          |
+| **Delete** | Remove prompts from the vault  |
 
 ---
 
@@ -50,48 +58,21 @@
 
 ---
 
-## 🚀 Run Locally
-
-1. Clone the repository
+## 💻 Run Locally
 
 ```bash
 git clone https://github.com/VDeepthi11/Promptly_AI.git
-```
 
-2. Navigate to the project folder
-
-```bash
 cd Promptly_AI
-```
 
-3. Install dependencies
-
-```bash
 pip install -r requirements.txt
-```
 
-4. Run the application
-
-```bash
 streamlit run appv2.py
 ```
 
 ---
 
-## 📷 Application Features
-
-* Create Prompt
-* View Prompt Library
-* Search Prompt History
-* Update Existing Prompts
-* Delete Prompts
-* SQLite Database Integration
-
----
-
-## 📚 Learning Outcomes
-
-This project demonstrates:
+## 📚 Skills Demonstrated
 
 * Python Programming
 * Streamlit Web Application Development
@@ -99,8 +80,8 @@ This project demonstrates:
 * SQL CRUD Operations
 * Database Connectivity
 * Data Handling with Pandas
-* Interactive User Interface Design
+* Interactive UI Development
 
 ---
 
-⭐ **PromptVault** is a simple, lightweight, and beginner-friendly CRUD application that showcases full-stack Python development using Streamlit and SQLite while helping users efficiently organize and reuse AI prompts.
+⭐ PromptVault demonstrates a complete CRUD application built with Python, Streamlit, SQLite, and Pandas, showcasing database integration, web application development, and interactive user interface design.
