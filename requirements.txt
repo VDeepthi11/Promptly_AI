@@ -1,2 +1,2 @@
-streamlit run app.pystreamlit
+streamlit
 pandas
